@@ -1,0 +1,20 @@
+perfume{
+  imutavel{
+    fragancia,
+    aparencia do frasco,
+    cor,
+    ingredientes
+    duração da fragancia
+  }
+
+  mutavel {
+    Quantidade de perfume,
+    potencia da fragancia
+  }
+
+  metodos {
+    tirar tampa,
+    botar tampa,
+    borrifar
+  }
+}
