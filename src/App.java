@@ -227,7 +227,9 @@ class App {
     maquinao.abastecerCopo300();
     // Esvaziando a máquina
     try { // servindo enquanto houver água
-      maquinao.servirCopo300();
+      // maquinao.servirCopo300(); // patch: faltou o while (true)
+      while (true)
+        maquinao.servirCopo300();
     } catch (Exception e) {
       System.err.println("true: acabou a água");
     }
@@ -366,7 +368,7 @@ class App {
     // erros a seguir, pois televisão está desligada
     televisao.aumentarVolume();
     televisao.irParaCanal(35);
-    //comentar os de cima após testar
+    // comentar os de cima após testar
 
     televisao.ligar();// tv foi ligada
     System.out.println(televisao.ligada == true);
