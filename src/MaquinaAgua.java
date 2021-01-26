@@ -20,18 +20,18 @@ class MaquinaAgua {
   }
 
   void servirCopo200() {
-    if (copos200 == 0 )
+    if (this.copos200 == 0)
       throw new IllegalStateException("Acabaram os copos de 200ml");
-    if (agua == 0 || agua < 0)
+    if (this.agua < 200)
       throw new IllegalStateException("Acabou o refil de agua");
     this.copos200--;
     this.agua -= 200;
   }
 
   void servirCopo300() {
-    if (copos300 == 0 )
+    if (this.copos300 == 0)
       throw new IllegalStateException("Acabaram os copos de 300ml");
-    if (agua == 0 || agua < 0)
+    if (this.agua < 300)
       throw new IllegalStateException("Acabou o refil de agua");
     this.copos300--;
     this.agua -= 300;

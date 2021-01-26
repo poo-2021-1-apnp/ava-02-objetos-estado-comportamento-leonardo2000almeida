@@ -27,16 +27,16 @@ class Forno {
   }
 
   void aumentarTemperatura() {
-    if (temperatura > 300)
+    if (this.temperatura > 300)
       throw new IllegalStateException("Temperatura máxima!");
-    temperatura += 50;
-    ligado = true;
+    this.temperatura += 50;
+    this.ligado = true;
   }
 
   int count = 3;
 
   int diminuirTemperatura() {
-    if (temperatura < 50)
+    if (this.temperatura < 50)
       throw new IllegalStateException("Temperatura minima atingida");
     if (count == 3) {
       return this.temperatura -= 50;
@@ -55,14 +55,12 @@ class Forno {
   }
 
   boolean desligar() {
-    if (ligado == false)
-      throw new IllegalStateException("Ja esta desligado");
-    return this.ligado = false;
+    return this.ligado = !this.ligado;
   }
 
   int tick() {
-    if (tempo != 0) {
-      return this.tempo--;
+    if (this.tempo != 0) {
+      return --this.tempo;
     }
     this.temperatura = 0;
     this.ligado = false;

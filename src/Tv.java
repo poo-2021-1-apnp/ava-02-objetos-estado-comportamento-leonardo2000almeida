@@ -27,26 +27,26 @@ class Tv {
   }
 
   int aumentarVolume() {
-    if (ligada == false) {
+    if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     } else if (volume == 100 || ligada == false) {
       throw new IllegalStateException("Volume máximo atingido");
     }
-    if (mudo == true) {
-      mudo = false;
-      volume = volumeAntigo;
+    if (this.mudo) {
+      this.mudo = false;
+      this.volume = volumeAntigo;
     }
     return this.volume++;
   }
 
   int diminuirVolume() {
-    if (ligada == false) {
+    if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     } else if (volume == 0 || ligada == false) {
       throw new IllegalArgumentException("Volume minimo atingido");
     }
 
-    if (mudo == true) {
+    if (mudo) {
       volume = volumeAntigo;
       mudo = false;
     }
@@ -55,13 +55,13 @@ class Tv {
   }
 
   int irParaCanal(int canal) {
-    if (ligada == false) {
+    if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     } else if (canal < 2 || canal > 69) {
       throw new IllegalStateException("Canal fora do ar");
     }
 
-    canalAntigo = this.canal;
+    this.canalAntigo = this.canal;
     return this.canal = canal;
   }
 
@@ -74,7 +74,7 @@ class Tv {
   }
 
   int voltarCanal() {
-    if (ligada == false) {
+    if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     }
 
@@ -82,53 +82,49 @@ class Tv {
   }
 
   int passarCanal() {
-    if (ligada == false) {
+    if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     }
-    if (canal == 69) {
-      canalAntigo = canal;
+    if (this.canal == 69) {
+      this.canalAntigo = this.canal;
       return this.canal = 2;
     } else {
-      canalAntigo = canal;
-      return this.canal++;
+      this.canalAntigo = canal;
+      return ++this.canal;
     }
   }
 
   int diminuirCanal() {
-    if (ligada == false) {
+    if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     }
 
-    if (canal == 2) {
-      canalAntigo = canal;
+    if (this.canal == 2) {
+      this.canalAntigo = this.canal;
       return this.canal = 69;
     } else {
-      canalAntigo = canal;
-      return this.canal--;
+      this.canalAntigo = this.canal;
+      return --this.canal;
     }
   }
 
   boolean mudo() {
-    if (ligada == false) {
+    if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     }
 
-    if (mudo == true) {
-      volume = volumeAntigo;
-      return this.mudo = false;
+    if (this.mudo) {
+      this.volume = this.volumeAntigo;
+      return !this.mudo;
     } else {
-      volumeAntigo = volume;
-      volume = 0;
+      this.volumeAntigo = this.volume;
+      this.volume = 0;
       return this.mudo = true;
     }
   }
 
   boolean ligar() {
-    if (ligada == true) {
-      return this.ligada = false;
-    }
-    this.canal = 2;
-    return this.ligada = true;
+    return this.ligada = !this.ligada;
   }
 
 }
