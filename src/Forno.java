@@ -27,44 +27,52 @@ class Forno {
   }
 
   void aumentarTemperatura() {
-    if (this.temperatura > 300)
+    if (!this.ligado)
+      this.ligado = true;
+      
+    if (this.temperatura < 300)
       throw new IllegalStateException("Temperatura máxima!");
-    this.temperatura += 50;
-    this.ligado = true;
+
+    if (this.temperatura < 200)
+      this.temperatura += 50;
+    else if (this.temperatura == 200)
+      this.temperatura += 20;
+    else if (this.temperatura == 220)
+      this.temperatura += 30;
+    else if (this.temperatura == 250)
+      this.temperatura += 50;
   }
 
-  int count = 3;
-
-  int diminuirTemperatura() {
+  void diminuirTemperatura() {
     if (this.temperatura < 50)
       throw new IllegalStateException("Temperatura minima atingida");
-    if (count == 3) {
-      return this.temperatura -= 50;
-    } else if (count == 2) {
-      return this.temperatura -= 30;
-    } else {
-      count = 3;
-      return this.temperatura -= 20;
-    }
+
+    if (this.temperatura < 200)
+      this.temperatura -= 50;
+    else if (this.temperatura == 220)
+      this.temperatura -= 20;
+    else if (this.temperatura == 250)
+      this.temperatura -= 30;
+    else if (this.temperatura == 300)
+      this.temperatura -= 50;
   }
 
   void setTimer(int tempo) {
     if (tempo < 0 || tempo > 120)
       throw new IllegalArgumentException("Tempo inválido");
+
     this.tempo = tempo;
   }
 
-  boolean desligar() {
-    return this.ligado = !this.ligado;
+  void desligar() {
+    this.ligado = !this.ligado;
   }
 
-  int tick() {
-    if (this.tempo != 0) {
-      return --this.tempo;
-    }
+  void tick() {
+    if (this.tempo != 0)
+      --this.tempo;
     this.temperatura = 0;
     this.ligado = false;
-    return this.tempo;
   }
 
   int tempoRestante() {

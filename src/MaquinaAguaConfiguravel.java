@@ -46,8 +46,10 @@ class MaquinaAguaConfiguravel {
   void servirCopo200() {
     if (this.copos200 == 0)
       throw new IllegalStateException("Acabaram os copos de 200ml");
+
     if (this.agua < 300)
       throw new IllegalStateException("Acabou o refil de agua");
+      
     --this.copos200;
     this.agua -= 200;
   }
@@ -55,8 +57,10 @@ class MaquinaAguaConfiguravel {
   void servirCopo300() {
     if (this.copos300 == 0)
       throw new IllegalStateException("Acabaram os copos de 300ml");
+
     if (this.agua < 300)
       throw new IllegalStateException("Acabou o refil de agua");
+
     --this.copos300;
     this.agua -= 300;
   }
@@ -64,12 +68,14 @@ class MaquinaAguaConfiguravel {
   void abastecerCopo200() {
     if (this.copos200 < 0)
       throw new IllegalArgumentException("Copos de 200ml deve ser positivoo");
+
     this.copos200 = this.capacidadeCopos200;
   }
 
   void abastecerCopo300() {
     if (this.copos300 < 0)
       throw new IllegalArgumentException("Copos de 300ml deve ser positivoo");
+
     this.copos300 = this.capacidadeCopos300;
   }
 

@@ -26,35 +26,34 @@ class Tv {
     return this.resolucao;
   }
 
-  int aumentarVolume() {
-    if (!this.ligada) {
+  void aumentarVolume() {
+    if (!this.ligada)
       throw new IllegalStateException("Tv delsigada !");
-    } else if (volume == 100 || ligada == false) {
+    else if (this.volume == 100 || !this.ligada)
       throw new IllegalStateException("Volume máximo atingido");
-    }
+
     if (this.mudo) {
-      this.mudo = false;
-      this.volume = volumeAntigo;
+      this.mudo = !this.mudo;
     }
-    return this.volume++;
+    ++this.volume;
   }
 
-  int diminuirVolume() {
+  void diminuirVolume() {
     if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
-    } else if (volume == 0 || ligada == false) {
+    } else if (this.volume == 0 || !this.ligada) {
       throw new IllegalArgumentException("Volume minimo atingido");
     }
 
-    if (mudo) {
-      volume = volumeAntigo;
-      mudo = false;
+    if (this.mudo) {
+      this.volume = this.volumeAntigo;
+      this.mudo = false;
     }
 
-    return this.volume--;
+    --this.volume;
   }
 
-  int irParaCanal(int canal) {
+  void irParaCanal(int canal) {
     if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     } else if (canal < 2 || canal > 69) {
@@ -62,7 +61,7 @@ class Tv {
     }
 
     this.canalAntigo = this.canal;
-    return this.canal = canal;
+    this.canal = canal;
   }
 
   int verCanal() {
@@ -73,58 +72,56 @@ class Tv {
     return this.volume;
   }
 
-  int voltarCanal() {
+  void voltarCanal() {
     if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     }
-
-    return this.canalAntigo;
+    this.canal = this.canalAntigo;
   }
 
-  int passarCanal() {
+  void passarCanal() {
     if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     }
     if (this.canal == 69) {
       this.canalAntigo = this.canal;
-      return this.canal = 2;
+      this.canal = 2;
     } else {
       this.canalAntigo = canal;
-      return ++this.canal;
+      ++this.canal;
     }
   }
 
-  int diminuirCanal() {
+  void diminuirCanal() {
     if (!this.ligada) {
       throw new IllegalStateException("Tv delsigada !");
     }
 
     if (this.canal == 2) {
       this.canalAntigo = this.canal;
-      return this.canal = 69;
+      this.canal = 69;
     } else {
       this.canalAntigo = this.canal;
-      return --this.canal;
+      --this.canal;
     }
   }
 
-  boolean mudo() {
-    if (!this.ligada) {
+  void mudo() {
+    if (!this.ligada)
       throw new IllegalStateException("Tv delsigada !");
-    }
 
     if (this.mudo) {
       this.volume = this.volumeAntigo;
-      return !this.mudo;
+      this.mudo = !this.mudo;
     } else {
       this.volumeAntigo = this.volume;
       this.volume = 0;
-      return this.mudo = true;
+      this.mudo = !this.mudo;
     }
   }
 
-  boolean ligar() {
-    return this.ligada = !this.ligada;
+  void ligar() {
+    this.ligada = !this.ligada;
   }
 
 }
