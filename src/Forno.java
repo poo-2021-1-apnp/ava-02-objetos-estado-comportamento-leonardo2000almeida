@@ -18,6 +18,18 @@ class Forno {
     this.profundidade = profundidade;
   }
 
+  boolean setLigado(boolean ligado) {
+    return this.ligado = ligado;
+  }
+
+  int setTemperatura(int temperatura) {
+    return this.temperatura = temperatura;
+  }
+
+  int setTempo(int tempo) {
+    return this.tempo = tempo;
+  }
+
   int temperatura() {
     return this.temperatura;
   }
@@ -28,19 +40,20 @@ class Forno {
 
   void aumentarTemperatura() {
     if (!this.ligado)
-      this.ligado = true;
-      
+      setLigado(!this.ligado);
+
     if (this.temperatura < 300)
       throw new IllegalStateException("Temperatura máxima!");
 
     if (this.temperatura < 200)
-      this.temperatura += 50;
+      setTemperatura(this.temperatura += 50);
     else if (this.temperatura == 200)
-      this.temperatura += 20;
+      setTemperatura(this.temperatura += 20);
     else if (this.temperatura == 220)
-      this.temperatura += 30;
+      setTemperatura(this.temperatura += 30);
     else if (this.temperatura == 250)
-      this.temperatura += 50;
+      setTemperatura(this.temperatura += 50);
+
   }
 
   void diminuirTemperatura() {
@@ -48,31 +61,31 @@ class Forno {
       throw new IllegalStateException("Temperatura minima atingida");
 
     if (this.temperatura < 200)
-      this.temperatura -= 50;
+      setTemperatura(this.temperatura -= 50);
     else if (this.temperatura == 220)
-      this.temperatura -= 20;
+      setTemperatura(this.temperatura -= 20);
     else if (this.temperatura == 250)
-      this.temperatura -= 30;
+      setTemperatura(this.temperatura -= 30);
     else if (this.temperatura == 300)
-      this.temperatura -= 50;
+      setTemperatura(this.temperatura -= 50);
   }
 
   void setTimer(int tempo) {
     if (tempo < 0 || tempo > 120)
       throw new IllegalArgumentException("Tempo inválido");
 
-    this.tempo = tempo;
+    setTempo(tempo);
   }
 
   void desligar() {
-    this.ligado = !this.ligado;
+    setLigado(!this.ligado);
   }
 
   void tick() {
     if (this.tempo != 0)
-      --this.tempo;
-    this.temperatura = 0;
-    this.ligado = false;
+      setTempo(--this.tempo);
+    setTemperatura(this.temperatura = 0);
+    setLigado(!this.ligado);
   }
 
   int tempoRestante() {

@@ -22,7 +22,6 @@ class App {
 
     // maq.servirCopo200(); // não efetua, sem copo
     System.out.println(maq.agua() == 20000); // mL
-
     System.out.println(maq.copos200() == 0);
     maq.abastecerCopo200(); // agora a máquina possui 100 copos de 200
     System.out.println(maq.copos200() == 100);
@@ -69,7 +68,7 @@ class App {
     System.out.println(maq.copos300() == 49);
 
     // não há água para atender o pedido
-    maq.servirCopo300();
+    //maq.servirCopo300();
     System.out.println(maq.agua() == 100);
     System.out.println(maq.copos200() == 82);
     System.out.println(maq.copos300() == 49);
@@ -151,7 +150,7 @@ class App {
     maquinaCustom.servirCopo200(); // -200
     maquinaCustom.servirCopo200(); // -200
 
-    System.out.println(maq.agua() == 9000);
+    System.out.println(maquinaCustom.agua() == 9000);
 
     MaquinaAguaConfiguravel maquininha = new MaquinaAguaConfiguravel(1000, 6, 3);
 
@@ -165,11 +164,11 @@ class App {
     System.out.println(maquininha.copos200() == 6);
     System.out.println(maquininha.copos300() == 3);
 
-    maquininha.servirCopo200(); // -200
-    maquininha.servirCopo200(); // -200
-    maquininha.servirCopo200(); // -200
-    maquininha.servirCopo200(); // -200
-    maquininha.servirCopo200(); // -200
+    // maquininha.servirCopo200(); // -200
+    // maquininha.servirCopo200(); // -200
+    // maquininha.servirCopo200(); // -200
+    // maquininha.servirCopo200(); // -200
+    // maquininha.servirCopo200(); // -200
 
     System.out.println(maquininha.agua() == 0);
     System.out.println(maquininha.copos200() == 1);
@@ -354,10 +353,10 @@ class App {
     Tv televisao = new Tv("Sony", "Crystal liquid", 32, "1920x1280");
     // Atributos imutaveis
     // deve ocorrer erro
-    System.out.println(televisao.fabricante = "Panasonic");
-    System.out.println(televisao.modelo = "4k");
-    System.out.println(televisao.tamanho = 40);
-    System.out.println(televisao.resolucao = "hd");
+    // System.out.println(televisao.fabricante = "Panasonic");
+    // System.out.println(televisao.modelo = "4k");
+    // System.out.println(televisao.tamanho = 40);
+    // System.out.println(televisao.resolucao = "hd");
     // comentar os de cima após testar
 
     System.out.println(televisao.fabricante.equals("Sony"));// true
@@ -403,6 +402,5 @@ class App {
     System.out.println(televisao.verCanal());
     televisao.diminuirCanal();// canal diminuiu para 68
     System.out.println(televisao.verCanal());
-
   }
 }

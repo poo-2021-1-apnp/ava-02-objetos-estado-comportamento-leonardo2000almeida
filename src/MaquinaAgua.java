@@ -15,8 +15,16 @@ class MaquinaAgua {
     return this.copos300;
   }
 
-  void abastecerAgua() {
-     this.agua = 20000;
+  int setAgua(int agua) {
+    return this.agua = agua;
+  }
+
+  int setCopo200(int copo200) {
+    return this.copos200 = copo200;
+  }
+
+  int setCopo300(int copo300) {
+    return this.copos300 = copo300;
   }
 
   void servirCopo200() {
@@ -25,9 +33,9 @@ class MaquinaAgua {
 
     if (this.agua < 200)
       throw new IllegalStateException("Acabou o refil de agua");
-      
-    this.copos200--;
-    this.agua -= 200;
+
+    setCopo200(--this.copos200);
+    setAgua(this.agua -= 200);
   }
 
   void servirCopo300() {
@@ -37,16 +45,20 @@ class MaquinaAgua {
     if (this.agua < 300)
       throw new IllegalStateException("Acabou o refil de agua");
 
-    this.copos300--;
-    this.agua -= 300;
+    setCopo300(--this.copos300);
+    setAgua(this.agua -= 300);
   }
 
   void abastecerCopo200() {
-    this.copos200 = 100;
+    setCopo200(100);
   }
 
   void abastecerCopo300() {
-    this.copos300 = 100;
+    setCopo300(100);
+  }
+
+  void abastecerAgua() {
+    setAgua(20000);
   }
 
 }

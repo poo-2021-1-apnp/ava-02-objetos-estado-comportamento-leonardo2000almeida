@@ -23,6 +23,18 @@ class MaquinaAguaConfiguravel {
     return this.agua;
   }
 
+  int setAgua(int agua) {
+    return this.agua = agua;
+  }
+
+  int setCopo200(int copo200) {
+    return this.copos200 = copo200;
+  }
+
+  int setCopo300(int copo300) {
+    return this.copos300 = copo300;
+  }
+
   int copos200() {
     return this.copos200;
   }
@@ -49,9 +61,9 @@ class MaquinaAguaConfiguravel {
 
     if (this.agua < 300)
       throw new IllegalStateException("Acabou o refil de agua");
-      
-    --this.copos200;
-    this.agua -= 200;
+
+    setCopo200(--this.copos200);
+    setAgua(this.agua -= 200);
   }
 
   void servirCopo300() {
@@ -61,22 +73,22 @@ class MaquinaAguaConfiguravel {
     if (this.agua < 300)
       throw new IllegalStateException("Acabou o refil de agua");
 
-    --this.copos300;
-    this.agua -= 300;
+    setCopo300(--this.copos300);
+    setAgua(this.agua -= 300);
   }
 
   void abastecerCopo200() {
     if (this.copos200 < 0)
       throw new IllegalArgumentException("Copos de 200ml deve ser positivoo");
 
-    this.copos200 = this.capacidadeCopos200;
+    setCopo200(this.capacidadeCopos200);
   }
 
   void abastecerCopo300() {
     if (this.copos300 < 0)
       throw new IllegalArgumentException("Copos de 300ml deve ser positivoo");
-
-    this.copos300 = this.capacidadeCopos300;
+      
+    setCopo300(this.capacidadeCopos300);
   }
 
 }
